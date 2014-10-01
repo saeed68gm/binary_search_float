@@ -4,6 +4,53 @@
 
 using namespace std;
 
+//Create a class for unit testing
+class unit_test_class
+{
+private:
+	string simple_test;
+	string all_same;
+	string palindrome;
+	string numbers_and_symbols;
+	string with_slashes;
+	string long_string;
+	string empty_string;
+	char char_array[20];
+protected:
+	int counter;
+	int passed;
+	double percentage;
+public:
+	unit_test_class()
+	{
+		simple_test="I am Saeid";
+		all_same="aaaaaaaaaa";
+		palindrome="abcddcba";
+		numbers_and_symbols="1278%27136%^%@__&^@^%6%@^%^5@#6627q138778";
+		with_slashes="hhh\\/\]]s";
+		empty_string="";
+		long_string="This project is aimed at visualizing data obtained from multiple surveillance cameras for the purpose of re-identification. ";
+		strcpy(char_array,"This is a char array");
+		counter=0;
+		passed=0;
+	}
+	bool unit_test_simple()
+	{
+		reverse_string(simple_test);
+		if(simple_test.compare("dieaS ma I"))
+		{
+			cout<<"simple test passed!"<<endl;
+			counter++;
+			passed++;
+			return true;
+		}
+		else
+		{
+			return false;
+			counter++;
+		}
+	}
+
 
 //the merge function for merge sort
 void merge(float* input_array,int begin, int mid, int end,int* indices,int size)
