@@ -5,7 +5,6 @@
 using namespace std;
 
 
-
 //the merge function for merge sort
 void merge(float* input_array,int begin, int mid, int end,int* indices,int size)
 {
@@ -127,74 +126,22 @@ int binary_search(float* input_array,int* indices,int length, float query)
 	
 }
 
-//Create a class for unit testing
-class unit_test_class
-{
-private:
-	float* simple_test;
-	string all_same;
-	string palindrome;
-	string numbers_and_symbols;
-	string with_slashes;
-	string long_string;
-	string empty_string;
-protected:
-	int counter;
-	int passed;
-	double percentage;
-public:
-	unit_test_class()
-	{
-		simple_test=new float[12,88,52,1,-1,2];
-		all_same="aaaaaaaaaa";
-		palindrome="abcddcba";
-		numbers_and_symbols="1278%27136%^%@__&^@^%6%@^%^5@#6627q138778";
-		with_slashes="hhh\\/\]]s";
-		empty_string="";
-		long_string="This project is aimed at visualizing data obtained from multiple surveillance cameras for the purpose of re-identification. ";
-		counter=0;
-		passed=0;
-	}
-	bool unit_test_simple()
-	{
-		int length=sizeof(simple_test)/sizeof(float);
-		int* indices=new int[length];
-		for (int i=0;i<length;i++)
-		{
-			indices[i]=i;
-		}
-		merge_sort(simple_test,0,length-1,indices,length);
-		int output=binary_search(simple_test,indices,length,88);
-		if(output==1)
-		{
-			cout<<"simple test passed!"<<endl;
-			counter++;
-			passed++;
-			return true;
-		}
-		else
-		{
-			return false;
-			counter++;
-		}
-	}
-	double unit_test_all()
-	{
-		unit_test_simple();
-		percentage=(passed/counter)*100;
-		cout<<"success rate is: "<<percentage<<endl;
-		return percentage;
-	}
-};
-
 //Driver function
 int main()
 {
 	//float test_case[]={214,122,8,66,28,012,88,52,1,-1,2};
 	float test_case[]={12,88,52,1,-1,2};
 	//float test_case[]={1.2548,2.4588,8.1,1.2547,0.58795,12,-1.2548,-1.2549,1,-1,2};
-	unit_test_class unit_test;
-	unit_test.unit_test_all();
+	int length=sizeof(test_case)/sizeof(float);
+	int* indices=new int[length];
+	for (int i=0;i<length;i++)
+	{
+		indices[i]=i;
+	}
+	print_array(test_case,length);
+	merge_sort(test_case,0,length-1,indices,length);
+	print_array(test_case,length);
+	cout<<binary_search(test_case,indices,length,88)<<endl;
 	getchar();
 	return 0;
 }
